@@ -1,1 +1,127 @@
-/* You can add global styles to this file, and also import other style files */
+$genericFont: 'Montserrat', sans-serif;
+$bodyFont: 14px;
+$primaryColor: #0087cf;
+$tertiaryColor: #ffc107;
+$green: green;
+
+* {
+    box-sizing: border-box;
+}
+img.logo {
+    display: block;
+    max-width: 300px;
+}
+header {
+    background-color: #4257a0;
+    box-shadow: 0 0 3px #ccc;
+    position: relative;
+    z-index: 2;
+}
+app-root {
+    position: relative;
+    z-index: 1;
+}
+html, body {
+    margin: 0;
+    padding: 0
+}
+html {
+    font-family: $genericFont;
+    line-height:2;
+    font-size: $bodyFont;
+}
+textarea {
+    font-family: $genericFont;
+    width: 100%;
+    display: block;
+    border: 1px solid #ccc;
+    resize: auto;
+    padding: 10px;
+    font-size: $bodyFont;
+}
+button {
+    font-size: $bodyFont;
+    font-family: $genericFont;
+    cursor: pointer;
+    height: 40px;
+    border: 0;
+    padding: 0 20px;
+    &.primary {
+        background-color: $primaryColor;
+        color: #fff;
+    }
+    &.secondary {
+        background-color: #ccc;
+        color: #555;
+    }
+    &.tertiary {
+        background-color: $tertiaryColor;
+        color: #555;
+    }
+    &.green {
+        background-color: $green;
+        color: #fff;
+    }
+}
+.steps {
+    width: 100%;
+}
+ul {
+    &.tabs {
+        width: 100%;
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        background-color: #ccc;
+        line-height: 60px;
+        li {
+            padding: 0 0 0 20px;
+            flex: 1;
+            &.active{
+                background-color: $primaryColor;
+                color: #fff
+            }
+        }
+    }
+}
+.btn-box {
+    position: fixed;
+    justify-content: space-between;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #eee;
+    padding: 20px;
+    box-shadow: 0 0 3px #ccc;
+}
+template-home, app-root, .home {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 86px);
+}
+.starter {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    h1 {
+        &.heading {
+            color: $primaryColor;
+            cursor: pointer;
+            font-size: 64px;
+            line-height: 104px;
+            padding: 30px;
+            line-height: 64px;
+            margin: auto;
+            border: 4px double $primaryColor;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                background-color: $primaryColor;
+                opacity: 0.8;
+                color: #fff;
+                border-color: #fff;
+            }
+        }
+    }
+}
