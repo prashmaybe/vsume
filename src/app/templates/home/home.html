@@ -1,0 +1,68 @@
+<div class="home">
+    <div class="starter" *ngIf="!showTabs">
+        <h1 class="heading" (click)="createResume()">Create your resume!</h1>
+    </div>
+    <div [class]="showVideo?'open video-box':'video-box'">
+        <video #video class="video"></video>
+        <button *ngIf="!recording" (click)="startRecording()">Start</button>
+    </div>
+    <div class="preview-box" [class]="previewVideo?'open video-box':'video-box'">
+        <video #preVideo class="video" controls></video>
+        <button (click)="previewVideo = false">Close</button>
+    </div>
+    <button *ngIf="showTabs && !previewVideo && resumeData['intro'].video!=='' && activeTab!='end'" (click)="preview()">Preview</button>
+    <div class="steps" *ngIf="showTabs">
+        <ul class="tabs">
+            <li [class]="activeTab=='intro'?'active':''" class="tab intro">Personal Details</li>
+            <li [class]="activeTab=='prof'?'active':''" class="tab prof">Professional Details</li>
+            <li [class]="activeTab=='sumUp'?'active':''" class="tab sumUp">Sum it all up</li>
+            <li [class]="activeTab=='end'?'active':''" class="tab end">Final Video</li>
+        </ul>
+        <ul class="tabs-content">
+            <li class="tab-content intro" *ngIf="activeTab=='intro'">
+                <button *ngIf="!showVideo" class="primary" (click)="showVideo=true">Record</button>
+                <form [formGroup]="enterDataForm" (ngSubmit)="enterData()">
+                    <textarea type="text" formControlName="text"></textarea>
+                    <button type="submit">Add Personal Details</button>
+                </form>
+                <div class="btn-box">
+                    <button class="secondary" (click)="showTabs=false"><ion-icon name="chevron-back-circle-outline"></ion-icon>Cancel</button>
+                    <button class="primary" *ngIf="resumeData['intro'].video!==''" (click)="setActiveData('prof')">Next<ion-icon name="chevron-forward-circle-outline"></ion-icon></button>
+                </div>
+            </li>
+            <li class="tab-content prof" *ngIf="activeTab=='prof'">
+                <button *ngIf="!showVideo" class="primary" (click)="showVideo=true">Record</button>
+                <form [formGroup]="enterDataForm" (ngSubmit)="enterData()">
+                    <textarea type="text" formControlName="text"></textarea>
+                    <button type="submit">Add Professional Details</button>
+                </form>
+                <div class="btn-box">
+                    <button class="secondary" (click)="setActiveData('intro')"><ion-icon name="chevron-back-circle-outline"></ion-icon>Back</button>
+                    <button class="primary" *ngIf="resumeData['prof'].video!==''" (click)="setActiveData('sumUp')">Next<ion-icon name="chevron-forward-circle-outline"></ion-icon></button>
+                </div>
+            </li>
+            <li class="tab-content sumUp" *ngIf="activeTab=='sumUp'">
+                <button *ngIf="!showVideo" class="primary" (click)="showVideo=true">Record</button>
+                <form [formGroup]="enterDataForm" (ngSubmit)="enterData()">
+                    <textarea type="text" formControlName="text"></textarea>
+                    <button type="submit">Add Sum Up</button>
+                </form>
+                <div class="btn-box">
+                    <button class="secondary" (click)="setActiveData('prof')"><ion-icon name="chevron-back-circle-outline"></ion-icon>Back</button>
+                    <button class="green" *ngIf="resumeData['sumUp'].video!==''" (click)="createVideo()">Finish<ion-icon name="checkmark-circle-outline"></ion-icon></button>
+                </div>
+            </li>
+            <li class="tab-content end" *ngIf="activeTab=='end'">
+                <div class="final-preview">
+                    <div style="background: red;">{{diplayText}}</div>
+                    <video #endVideo class="video"></video>
+                </div>
+                <div class="btn-box">
+                    <button (click)="setActiveData('intro')">Recreate</button>
+                    <button class="tertiary" (click)="play()">Play</button>
+                    <button class="primary" (click)="submit()">Submit</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

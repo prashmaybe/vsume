@@ -1,0 +1,17 @@
+template-page-not-found {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    line-height: 2;
+    overflow: auto;
+    .error-box {
+        margin: auto;
+        img {
+            max-width: 100px
+        }
+        h1 {
+            font-size: 50px;
+            font-weight: 700;
+        }
+    }
+}

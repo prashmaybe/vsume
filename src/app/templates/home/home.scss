@@ -1,0 +1,17 @@
+template-home {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    line-height: 2;
+    overflow: auto;
+    video.video {
+        width: 100%;
+        height: auto;
+    }
+    .video-box {
+        display: none;
+        &.open {
+            display:block;
+        }
+    }
+}
