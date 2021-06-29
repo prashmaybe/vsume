@@ -2,7 +2,7 @@ import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular
 import RecordRTC from 'recordrtc/RecordRTC.min'
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { NgxTypedJsComponent } from 'ngx-typed-js';
 @Component({
 	selector: 'template-home',
 	templateUrl: './home.html',
@@ -15,7 +15,7 @@ export class HomeTemplate implements AfterViewInit {
 		text: ['', Validators.required]
 	})
 	diplayText:string = ''
-	videoLength: number = 3000
+	videoLength: number = 2000
 	private stream: any //MediaStream;
 	private recordRTC: any;
 	public resumeData:any = {
@@ -43,12 +43,13 @@ export class HomeTemplate implements AfterViewInit {
 	@ViewChild('video') video:any
 	@ViewChild('preVideo') preVideo:any
 	@ViewChild('endVideo') endVideo:any
-	
+	@ViewChild(NgxTypedJsComponent)
+	public typed: NgxTypedJsComponent = new NgxTypedJsComponent;
 	constructor(
 		private sanitizer: DomSanitizer,
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+		public ngxTypedJsComponent: NgxTypedJsComponent
 	) {
-	  // Do stuff
 	}
 	ngAfterViewInit() {
 		let video:HTMLVideoElement = this.video.nativeElement;
@@ -59,6 +60,8 @@ export class HomeTemplate implements AfterViewInit {
   
 	setActiveData (tabIndex: string) {
 		this.activeTab = tabIndex
+		this.showVideo = false;
+		this.enterDataForm.reset()
 	}
 
 	toggleControls() {
@@ -149,7 +152,7 @@ export class HomeTemplate implements AfterViewInit {
 	}
 
 	submit() {
-
+		alert('This application is clinet side only. Not ready to submit.')
 	}
 	play() {
 		let video: HTMLVideoElement = this.endVideo.nativeElement;

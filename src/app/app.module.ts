@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {RouterModule} from '@angular/router';
 import { HomeTemplate } from './templates/home/home';
 import { PageNotFoundTemplate } from './templates/page-not-found/page-not-found';
+import {NgxTypedJsComponent, NgxTypedJsModule} from 'ngx-typed-js';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,11 +19,15 @@ import { PageNotFoundTemplate } from './templates/page-not-found/page-not-found'
     BrowserModule,
     RouterModule,
     AppRoutingModule,
+    NgxTypedJsModule
   ],
   exports: [
     FormsModule
   ],
-  providers: [],
+  providers: [
+    NgxTypedJsModule,
+    NgxTypedJsComponent
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

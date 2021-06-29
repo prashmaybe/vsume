@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { NgxTypedJsComponent } from 'ngx-typed-js';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'vidApp';
+  constructor(
+    public ngxTypedJsComponent:NgxTypedJsComponent
+  ){
+
+  }
 }
