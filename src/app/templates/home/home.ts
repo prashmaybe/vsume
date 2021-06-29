@@ -15,7 +15,7 @@ export class HomeTemplate implements AfterViewInit {
 		text: ['', Validators.required]
 	})
 	diplayText:string = ''
-	videoLength: number = 2000
+	videoLength: number = 20000
 	private stream: any //MediaStream;
 	private recordRTC: any;
 	public resumeData:any = {
